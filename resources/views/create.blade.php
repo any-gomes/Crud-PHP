@@ -23,7 +23,7 @@
                 <input class="form-control" type="text" name="title" id="title" placeholder="Título:" value="{{$task->title ?? ''}}" required><br>
                 <input class="form-control" type="text" name="done" id="done" placeholder="Completo:" value="{{$task->done ?? ''}}" required><br>
                 <select class="form-control" name="id_user" id="id_user" required>
-                    <option value="{{$task->relUsers->id ?? ''}}">{{$task->relUsers->name ?? 'Autor'}}</option>
+                    <option value="{{$task->relUsers->id ?? ''}}">{{$task->relUsers->name ?? 'Usuário'}}</option>
                     @foreach($users as $user)
                         <option value="{{$user->id}}">{{$user->name}}</option>
                     @endforeach
