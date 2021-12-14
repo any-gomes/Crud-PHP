@@ -3,9 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Models\TaskModel;
+use App\Models\User;
+use App\Http\Requests\TaskRequest;
 
 class TaskController extends Controller
 {
+    private $objUser;
+    private $objTask;
+
+    public function __construct()
+    {
+        $this->objUser=new User();
+        $this->objTask=new TaskModel();  
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +24,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return view(view:'index');
+        $task=$this->objTask->paginate(10);
+        return view('index',compact('task'));
     }
 
     /**
@@ -23,7 +35,8 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        $users=$this->objUser->all();
+        return view('create',compact('users'));
     }
 
     /**
@@ -32,9 +45,16 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TaskRequest $request)
     {
-        //
+        $cad=$this->objTask->create([
+            'title'=>$request->title,
+            'done'=>$request->done,
+            'id_user'=>$request->id_user
+         ]);
+         if($cad){
+             return redirect('tasks');
+         }
     }
 
     /**
@@ -45,7 +65,8 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        //
+        $task=$this->objTask->find($id);
+        return view('show',compact('task'));
     }
 
     /**
@@ -56,7 +77,9 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        //
+        $task=$this->objTask->find($id);
+        $users=$this->objUser->all();
+        return view('create',compact('task','users'));
     }
 
     /**
@@ -66,9 +89,14 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TaskRequest $request, $id)
     {
-        //
+        $this->objTask->where(['id'=>$id])->update([
+            'title'=>$request->title,
+            'done'=>$request->done,
+            'id_user'=>$request->id_user
+        ]);
+        return redirect('tasks');
     }
 
     /**
@@ -79,6 +107,7 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $del=$this->objTask->destroy($id);
+        return($del)?"sim":"não";
     }
 }
