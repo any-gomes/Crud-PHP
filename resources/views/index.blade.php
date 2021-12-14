@@ -25,10 +25,17 @@
                     $user=$tasks->find($tasks->id)->relUsers;
                 @endphp
                 <tr>
-                    <th scope="row">{{$tasks->id}}</th>
-                    <td>{{$tasks->title}}</td>
-                    <td>{{$tasks->done}} </td>
-                    <td>{{$user->name}}</td>
+                    @if($tasks->done == '1')
+                        <th scope="row"><strike>{{$tasks->id}}</strike></th>
+                        <td><strike>{{$tasks->title}}</strike></td>
+                        <td><strike>{{$tasks->done}}</strike></td>
+                        <td><strike>{{$user->name}}</strike></td>
+                    @else
+                        <th scope="row">{{$tasks->id}}</th>
+                        <td>{{$tasks->title}}</td>
+                        <td>{{$tasks->done}}</td>
+                        <td>{{$user->name}}</td>
+                    @endif
                     <td>
                         <a href="{{url("tasks/$tasks->id")}}">
                             <button class="btn btn-dark">Visualizar</button>
