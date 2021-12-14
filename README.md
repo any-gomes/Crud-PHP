@@ -1,4 +1,8 @@
-## Instalação Básica
+## Equipe 
+Any Gomes - SP3050122
+## Descrição do Projeto
+Programa simples de uma Lista de Tarefas, com os respectivos usuários responsáveis.
+## Instruções de Deployment
 É necessário ter instalado um servidor de sua preferência, neste caso foi utilizado o [WampServer](https://www.wampserver.com/en/) para execução do ambiente.
 
 Primeiro, clonar o repositório dentro do diretório:
