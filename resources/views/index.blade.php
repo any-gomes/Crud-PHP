@@ -1,6 +1,6 @@
 @extends('templates.template')
 @section('content')
-<h1 class="text-center">Crud</h1>
+<h1 class="text-center">Lista de Tarefas</h1>
 @csrf
 <div class="text-center mt-3 mb-4">
         <a href="{{url('tasks/create')}}">
@@ -15,6 +15,7 @@
                 <th scope="col">Id</th>
                 <th scope="col">Título</th>
                 <th scope="col">Completo</th>
+                <th scope="col">Usuário</th>
             </tr>
             </thead>
             <tbody>
@@ -26,7 +27,8 @@
                 <tr>
                     <th scope="row">{{$tasks->id}}</th>
                     <td>{{$tasks->title}}</td>
-                    <td>{{$tasks->done}}</td>
+                    <td>{{$tasks->done}} </td>
+                    <td>{{$user->name}}</td>
                     <td>
                         <a href="{{url("tasks/$tasks->id")}}">
                             <button class="btn btn-dark">Visualizar</button>
