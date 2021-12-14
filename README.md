@@ -1,11 +1,17 @@
-## Instalação
-Primeiro, clonar o repositório e instalar todas as dependências.
+## Instalação Básica
+É necessário ter instalado um servidor de sua preferência, neste caso foi utilizado o [WampServer](https://www.wampserver.com/en/) para execução do ambiente.
+
+Primeiro, clonar o repositório dentro do diretório:
 ```sh
+$ cd C:\wamp64
 $ git clone https://github.com/any-gomes/Crud-PHP.git task-list
 $ cd task-list
+```
+E instalar todas as dependências.
+```sh
 $ composer install
 ```
-Depois, defina as configurações do Banco de Dados no arquivo `.env` e execute o comando migrate.
+Depois, defina as configurações do Banco de Dados no arquivo `.env` e execute o comando migrate. O Banco utilizado foi o mysql
 ```sh
 $ php artisan migrate
 ```
@@ -13,6 +19,10 @@ Agora é só executar o comando para iniciar o server! :)
 ```sh
 $ php artisan serve
 ```
+Obrigada!
+Any Gomes
+
+Abaixo segue as informações do framework utilizado, o Laravel.
 
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
